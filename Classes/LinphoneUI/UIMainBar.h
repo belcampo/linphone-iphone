@@ -19,15 +19,16 @@
 
 #import <UIKit/UIKit.h>
 #import "TPMultiLayoutViewController.h"
+#import "ToolBarButton.h"
 
 @interface UIMainBar : TPMultiLayoutViewController {
 }
 
-@property (nonatomic, retain) IBOutlet UIButton* historyButton;
-@property (nonatomic, retain) IBOutlet UIButton* contactsButton;
-@property (nonatomic, retain) IBOutlet UIButton* dialerButton;
-@property (nonatomic, retain) IBOutlet UIButton* settingsButton;
-@property (nonatomic, retain) IBOutlet UIButton* chatButton;
+@property (nonatomic, retain) IBOutlet ToolBarButton* historyButton;
+@property (nonatomic, retain) IBOutlet ToolBarButton* contactsButton;
+@property (nonatomic, retain) IBOutlet ToolBarButton* dialerButton;
+@property (nonatomic, retain) IBOutlet ToolBarButton* settingsButton;
+@property (nonatomic, retain) IBOutlet ToolBarButton* chatButton;
 @property (nonatomic, retain) IBOutlet UIView *historyNotificationView;
 @property (nonatomic, retain) IBOutlet UILabel *historyNotificationLabel;
 @property (nonatomic, retain) IBOutlet UIView *chatNotificationView;

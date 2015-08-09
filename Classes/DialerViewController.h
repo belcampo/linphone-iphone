@@ -26,6 +26,7 @@
 #import "UICallButton.h"
 #import "UITransferButton.h"
 #import "UIDigitButton.h"
+#import "UIBaseButton.h"
 
 @interface DialerViewController : UIViewController <UITextFieldDelegate, UICompositeViewDelegate, MFMailComposeViewControllerDelegate> {
 }
@@ -37,7 +38,7 @@
 @property (nonatomic, assign) BOOL transferMode;
 
 @property (nonatomic, retain) IBOutlet UITextField* addressField;
-@property (nonatomic, retain) IBOutlet UIButton* addContactButton;
+@property (nonatomic, retain) IBOutlet UIBaseButton* addContactButton;
 @property (nonatomic, retain) IBOutlet UICallButton* callButton;
 @property (nonatomic, retain) IBOutlet UICallButton* addCallButton;
 @property (nonatomic, retain) IBOutlet UITransferButton* transferButton;

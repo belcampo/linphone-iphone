@@ -205,15 +205,34 @@ static UICompositeViewDescription *compositeDescription = nil;
     [super viewDidLoad];
 
 	[zeroButton    setDigit:'0'];
+    
+    [zeroButton setSubLabelText:@"+"];
 	[oneButton     setDigit:'1'];
-	[twoButton     setDigit:'2'];
+	
+    [twoButton     setDigit:'2'];
+    [twoButton setSubLabelText:[@"abc" uppercaseString]];
+    
 	[threeButton   setDigit:'3'];
+    [threeButton setSubLabelText:[@"def" uppercaseString]];
+    
 	[fourButton    setDigit:'4'];
+    [fourButton setSubLabelText:[@"ghi" uppercaseString]];
+    
 	[fiveButton    setDigit:'5'];
+    [fiveButton setSubLabelText:[@"jkl" uppercaseString]];
+    
 	[sixButton     setDigit:'6'];
+    [sixButton setSubLabelText:[@"mno" uppercaseString]];
+    
 	[sevenButton   setDigit:'7'];
+    [sevenButton setSubLabelText:[@"pqrs" uppercaseString]];
+    
 	[eightButton   setDigit:'8'];
+    [eightButton setSubLabelText:[@"tuv" uppercaseString]];
+    
 	[nineButton    setDigit:'9'];
+    [nineButton setSubLabelText:[@"wxyz" uppercaseString]];
+    
 	[starButton    setDigit:'*'];
 	[sharpButton   setDigit:'#'];
 

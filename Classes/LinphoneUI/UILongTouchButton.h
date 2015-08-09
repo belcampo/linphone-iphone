@@ -18,13 +18,14 @@
  */  
 
 #import <UIKit/UIKit.h>
+#import "UIBaseButton.h"
 
 @protocol UILongTouchButtonDelegate 
 -(void) onRepeatTouch;
 -(void) onLongTouch;
 @end
 
-@interface UILongTouchButton : UIButton <UILongTouchButtonDelegate> {
+@interface UILongTouchButton : UIBaseButton <UILongTouchButtonDelegate> {
     
 }
 

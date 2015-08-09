@@ -19,7 +19,7 @@
 
 #import "UICallButton.h"
 #import "LinphoneManager.h"
-
+#import "UIBaseButton.h"
 #import <CoreTelephony/CTCallCenter.h>
 
 @implementation UICallButton
@@ -31,6 +31,7 @@
 
 - (void)initUICallButton {
     [self addTarget:self action:@selector(touchUp:) forControlEvents:UIControlEventTouchUpInside];
+    self.backgroundColor = UIColorFromRGB(0x2BAA34);
 }
 
 - (id)init {

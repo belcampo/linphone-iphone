@@ -111,27 +111,40 @@
     
     [zeroButton setDigit:'0'];
     [zeroButton setDtmf:true];
+    
+    [oneButton setSubLabelText:@"+"];
 	[oneButton    setDigit:'1'];
     [oneButton setDtmf:true];
+    
 	[twoButton    setDigit:'2'];
     [twoButton setDtmf:true];
-	[threeButton  setDigit:'3'];
+	[twoButton setSubLabelText:[@"abc" uppercaseString]];
+    
+    [threeButton  setDigit:'3'];
     [threeButton setDtmf:true];
-	[fourButton   setDigit:'4'];
+	
+    [fourButton   setDigit:'4'];
     [fourButton setDtmf:true];
-	[fiveButton   setDigit:'5'];
+	
+    [fiveButton   setDigit:'5'];
     [fiveButton setDtmf:true];
-	[sixButton    setDigit:'6'];
+	
+    [sixButton    setDigit:'6'];
     [sixButton setDtmf:true];
-	[sevenButton  setDigit:'7'];
+	
+    [sevenButton  setDigit:'7'];
     [sevenButton setDtmf:true];
-	[eightButton  setDigit:'8'];
+	
+    [eightButton  setDigit:'8'];
     [eightButton setDtmf:true];
-	[nineButton   setDigit:'9'];
+	
+    [nineButton   setDigit:'9'];
     [nineButton setDtmf:true];
-	[starButton   setDigit:'*'];
+	
+    [starButton   setDigit:'*'];
     [starButton setDtmf:true];
-	[sharpButton  setDigit:'#'];
+	
+    [sharpButton  setDigit:'#'];
     [sharpButton setDtmf:true];
 
     {

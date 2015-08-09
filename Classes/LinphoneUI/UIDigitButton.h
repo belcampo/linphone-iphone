@@ -25,6 +25,8 @@
 @interface UIDigitButton : UILongTouchButton {
 }
 
+-(void)setSubLabelText:(NSString *)text;
+
 @property (nonatomic, retain) IBOutlet UITextField* addressField;
 @property char digit;
 @property bool dtmf;

@@ -21,6 +21,7 @@
 #import "PhoneMainView.h"
 #import "CAAnimation+Blocks.h"
 
+
 @implementation UIMainBar
 
 
@@ -65,7 +66,7 @@ static NSString * const kDisappearAnimation = @"disappear";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(changeViewEvent:)
                                                  name:kLinphoneMainViewChange
@@ -126,53 +127,28 @@ static NSString * const kDisappearAnimation = @"disappear";
 
     {
         UIButton *historyButtonLandscape = (UIButton*) [landscapeView viewWithTag:[historyButton tag]];
-        // Set selected+over background: IB lack !
-        [historyButton setBackgroundImage:[UIImage imageNamed:@"history_selected.png"]
-                                 forState:(UIControlStateHighlighted | UIControlStateSelected)];
-
-        // Set selected+over background: IB lack !
-        [historyButtonLandscape setBackgroundImage:[UIImage imageNamed:@"history_selected_landscape.png"]
-                                           forState:(UIControlStateHighlighted | UIControlStateSelected)];
-
+ 
         [LinphoneUtils buttonFixStatesForTabs:historyButton];
         [LinphoneUtils buttonFixStatesForTabs:historyButtonLandscape];
     }
 
     {
         UIButton *contactsButtonLandscape = (UIButton*) [landscapeView viewWithTag:[contactsButton tag]];
-        // Set selected+over background: IB lack !
-        [contactsButton setBackgroundImage:[UIImage imageNamed:@"contacts_selected.png"]
-                                  forState:(UIControlStateHighlighted | UIControlStateSelected)];
 
-        // Set selected+over background: IB lack !
-        [contactsButtonLandscape setBackgroundImage:[UIImage imageNamed:@"contacts_selected_landscape.png"]
-                                         forState:(UIControlStateHighlighted | UIControlStateSelected)];
+
 
         [LinphoneUtils buttonFixStatesForTabs:contactsButton];
         [LinphoneUtils buttonFixStatesForTabs:contactsButtonLandscape];
     }
     {
         UIButton *dialerButtonLandscape = (UIButton*) [landscapeView viewWithTag:[dialerButton tag]];
-        // Set selected+over background: IB lack !
-        [dialerButton setBackgroundImage:[UIImage imageNamed:@"dialer_selected.png"]
-                                forState:(UIControlStateHighlighted | UIControlStateSelected)];
 
-        // Set selected+over background: IB lack !
-        [dialerButtonLandscape setBackgroundImage:[UIImage imageNamed:@"dialer_selected_landscape.png"]
-                                           forState:(UIControlStateHighlighted | UIControlStateSelected)];
 
         [LinphoneUtils buttonFixStatesForTabs:dialerButton];
         [LinphoneUtils buttonFixStatesForTabs:dialerButtonLandscape];
     }
     {
         UIButton *settingsButtonLandscape = (UIButton*) [landscapeView viewWithTag:[settingsButton tag]];
-        // Set selected+over background: IB lack !
-        [settingsButton setBackgroundImage:[UIImage imageNamed:@"settings_selected.png"]
-                                  forState:(UIControlStateHighlighted | UIControlStateSelected)];
-
-        // Set selected+over background: IB lack !
-        [settingsButtonLandscape setBackgroundImage:[UIImage imageNamed:@"settings_selected_landscape.png"]
-                                       forState:(UIControlStateHighlighted | UIControlStateSelected)];
 
         [LinphoneUtils buttonFixStatesForTabs:settingsButton];
         [LinphoneUtils buttonFixStatesForTabs:settingsButtonLandscape];
@@ -180,13 +156,6 @@ static NSString * const kDisappearAnimation = @"disappear";
 
     {
         UIButton *chatButtonLandscape = (UIButton*) [landscapeView viewWithTag:[chatButton tag]];
-        // Set selected+over background: IB lack !
-        [chatButton setBackgroundImage:[UIImage imageNamed:@"chat_selected.png"]
-                              forState:(UIControlStateHighlighted | UIControlStateSelected)];
-
-        // Set selected+over background: IB lack !
-        [chatButtonLandscape setBackgroundImage:[UIImage imageNamed:@"chat_selected_landscape.png"]
-                              forState:(UIControlStateHighlighted | UIControlStateSelected)];
 
         [LinphoneUtils buttonFixStatesForTabs:chatButton];
         [LinphoneUtils buttonFixStatesForTabs:chatButtonLandscape];
@@ -211,18 +180,18 @@ static NSString * const kDisappearAnimation = @"disappear";
                                                   object:nil];
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    // Force the animations
-    [[self.view layer] removeAllAnimations];
-    [historyNotificationView.layer setTransform:CATransform3DIdentity];
-    [chatNotificationView.layer setTransform:CATransform3DIdentity];
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [chatNotificationView setHidden:TRUE];
-    [historyNotificationView setHidden:TRUE];
-    [self update:FALSE];
-}
+//- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+//    // Force the animations
+//    [[self.view layer] removeAllAnimations];
+//    [historyNotificationView.layer setTransform:CATransform3DIdentity];
+//    [chatNotificationView.layer setTransform:CATransform3DIdentity];
+//}
+//
+//- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+//    [chatNotificationView setHidden:TRUE];
+//    [historyNotificationView setHidden:TRUE];
+//    [self update:FALSE];
+//}
 
 
 

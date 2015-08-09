@@ -18,9 +18,9 @@
  */              
 
 #import <UIKit/UIKit.h>
+#import "UIBaseButton.h"
 
-
-@interface UICallButton : UIButton {
+@interface UICallButton : UIBaseButton {
 }
 
 @property (nonatomic, retain) IBOutlet UITextField* addressField;

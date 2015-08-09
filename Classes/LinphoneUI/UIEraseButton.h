@@ -21,6 +21,7 @@
 
 #import "UILongTouchButton.h"
 
+
 @interface UIEraseButton : UILongTouchButton<UILongTouchButtonDelegate>  {  
 }
 
