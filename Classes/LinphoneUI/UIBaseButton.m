@@ -6,7 +6,10 @@
 //
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "UIBaseButton.h"
+
+//IB_DESIGNABLE
 
 @interface UIBaseButton()
 @property (nonatomic, strong) UIView *selectedView;
@@ -14,6 +17,7 @@
 @end
 
 @implementation UIBaseButton
+
 
 -(instancetype)init {
     self = [super init];

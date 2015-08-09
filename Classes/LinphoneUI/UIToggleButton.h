@@ -18,6 +18,7 @@
  */       
 
 #import <UIKit/UIKit.h>
+#import "UIBaseButton.h"
 
 @protocol UIToggleButtonDelegate 
 	- (void)onOn;
@@ -25,7 +26,7 @@
 	- (bool)onUpdate;
 @end
 
-@interface UIToggleButton : UIButton <UIToggleButtonDelegate> {	
+@interface UIToggleButton : UIBaseButton <UIToggleButtonDelegate> {
 }
 
 - (bool)update;
