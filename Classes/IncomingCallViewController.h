@@ -22,6 +22,8 @@
 #import "UICompositeViewController.h"
 #import "TPMultiLayoutViewController.h"
 #include "linphone/linphonecore.h"
+#import "UIBaseButton.h"
+
 
 @protocol IncomingCallViewDelegate <NSObject>
 
@@ -38,6 +40,8 @@
 @property (nonatomic, retain) IBOutlet UIImageView* avatarImage;
 @property (nonatomic, assign) LinphoneCall* call;
 @property (nonatomic, retain) id<IncomingCallViewDelegate> delegate;
+@property (retain, nonatomic) IBOutlet UIBaseButton *acceptButton;
+@property (retain, nonatomic) IBOutlet UIBaseButton *declineButton;
 
 - (IBAction)onAcceptClick:(id) event;
 - (IBAction)onDeclineClick:(id) event;

@@ -2087,12 +2087,7 @@
 		2214EB7012F84668002A5394 /* LinphoneUI */ = {
 			isa = PBXGroup;
 			children = (
-				492FD7CD1B77E1F700BA8F46 /* ToolBarButton.h */,
-				492FD7CE1B77E1F700BA8F46 /* ToolBarButton.m */,
-				492FD7CF1B77E1F700BA8F46 /* UIBaseButton.h */,
-				492FD7D01B77E1F700BA8F46 /* UIBaseButton.m */,
-				492FD7D11B77E1F700BA8F46 /* UIButton+ContentLayout.h */,
-				492FD7D21B77E1F700BA8F46 /* UIButton+ContentLayout.m */,
+				49D5292F1B809B4C00B5580E /* Buttons */,
 				D35E757F159328EA0066B1C1 /* UIAddressTextField.h */,
 				D35E7580159328EB0066B1C1 /* UIAddressTextField.m */,
 				22C7555E1317E59C007BC101 /* UIBluetoothButton.h */,
@@ -2103,8 +2098,6 @@
 				D326483C1588950F00930C67 /* UICallBar.m */,
 				D38187E415FE349700C3EDCA /* UICallBar.xib */,
 				D38187E815FE349D00C3EDCA /* UICallBar~ipad.xib */,
-				2214EB7812F846B1002A5394 /* UICallButton.h */,
-				2214EB7912F846B1002A5394 /* UICallButton.m */,
 				D36C43C4158F2E5A0048BA40 /* UICallCell.h */,
 				D36C43C5158F2E5A0048BA40 /* UICallCell.m */,
 				D381881415FE3F0B00C3EDCA /* UICallCell.xib */,
@@ -2316,6 +2309,21 @@
 				F03A9B7E18C0D9C900C4D7FE /* libcunit.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		49D5292F1B809B4C00B5580E /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				2214EB7812F846B1002A5394 /* UICallButton.h */,
+				2214EB7912F846B1002A5394 /* UICallButton.m */,
+				492FD7D11B77E1F700BA8F46 /* UIButton+ContentLayout.h */,
+				492FD7D21B77E1F700BA8F46 /* UIButton+ContentLayout.m */,
+				492FD7CD1B77E1F700BA8F46 /* ToolBarButton.h */,
+				492FD7CE1B77E1F700BA8F46 /* ToolBarButton.m */,
+				492FD7CF1B77E1F700BA8F46 /* UIBaseButton.h */,
+				492FD7D01B77E1F700BA8F46 /* UIBaseButton.m */,
+			);
+			name = Buttons;
 			sourceTree = "<group>";
 		};
 		D326483415887D4400930C67 /* Utils */ = {

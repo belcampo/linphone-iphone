@@ -27,7 +27,7 @@
 #import "UIDigitButton.h"
 #import "TPMultiLayoutViewController.h"
 
-@interface UICallBar: TPMultiLayoutViewController {
+@interface UICallBar: UIViewController {
 }
 
 @property (nonatomic, retain) IBOutlet UIPauseButton*   pauseButton;
@@ -48,8 +48,6 @@
 @property (nonatomic, retain) IBOutlet UIButton*        optionsTransferButton;
 @property (nonatomic, retain) IBOutlet UIToggleButton*  dialerButton;
 
-@property (nonatomic, retain) IBOutlet UIImageView*         leftPadding;
-@property (nonatomic, retain) IBOutlet UIImageView*         rightPadding;
 
 
 @property (nonatomic, retain) IBOutlet UIDigitButton* oneButton;

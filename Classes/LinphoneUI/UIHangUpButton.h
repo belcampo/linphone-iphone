@@ -18,8 +18,9 @@
  */       
 
 #import <UIKit/UIKit.h>
+#import "UIBaseButton.h"
 
-@interface UIHangUpButton : UIButton {
+@interface UIHangUpButton : UIBaseButton {
 
 }
 

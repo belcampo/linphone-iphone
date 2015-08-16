@@ -42,11 +42,22 @@
     [avatarImage release];
     [addressLabel release];
     [delegate release];
+    [_acceptButton release];
+    [_declineButton release];
     [super dealloc];
 }
 
 
 #pragma mark - ViewController Functions
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.acceptButton setImage:[[UIImage imageNamed:@"call-icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    self.acceptButton.tintColor = [UIColor whiteColor];
+    
+    self.acceptButton.backgroundColor = UIColorFromRGB(0x2BAA34);
+    self.declineButton.backgroundColor = UIColorFromRGB(0xFB2025);
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -115,7 +126,9 @@ static UICompositeViewDescription *compositeDescription = nil;
 - (void)update {
     [self view]; //Force view load
     
-    [avatarImage setImage:[UIImage imageNamed:@"avatar_unknown.png"]];
+    
+    [avatarImage setImage:[[UIImage imageNamed:@"user"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+    avatarImage.tintColor = [UIColor whiteColor];
     
     NSString* address = nil;
     const LinphoneAddress* addr = linphone_call_get_remote_address(call);
