@@ -9,7 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIBaseButton.h"
 
-//IB_DESIGNABLE
+
 
 @interface UIBaseButton()
 @property (nonatomic, strong) UIView *selectedView;
@@ -51,6 +51,7 @@
 }
 
 -(void)setup {
+    
     self.clipsToBounds = YES;
     self.layer.cornerRadius = self.bounds.size.height / 2;
     self.layer.borderColor = [UIColor whiteColor].CGColor;

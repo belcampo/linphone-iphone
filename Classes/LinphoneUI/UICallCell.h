@@ -49,8 +49,8 @@ typedef enum _UICallCellOtherView {
 
 @property (nonatomic, retain) UICallCellData *data;
 
-@property (nonatomic, retain) IBOutlet UIImageView* headerBackgroundImage;
-@property (nonatomic, retain) IBOutlet UIImageView* headerBackgroundHighlightImage;
+
+@property (retain, nonatomic) IBOutlet UIView *headerBackground;
 
 @property (nonatomic, retain) IBOutlet UILabel* addressLabel;
 @property (nonatomic, retain) IBOutlet UILabel* stateLabel;

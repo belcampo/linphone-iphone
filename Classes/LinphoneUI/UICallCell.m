@@ -35,7 +35,7 @@
         self->minimize = minimized;
         self->view = UICallCellOtherView_Avatar;
         self->call = acall;
-        image = [[UIImage imageNamed:@"avatar_unknown.png"] retain];
+        image = [[[UIImage imageNamed:@"user"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] retain];
         address = [NSLocalizedString(@"Unknown",nil) retain];
         [self update];
     }
@@ -95,8 +95,6 @@
 
 @synthesize data;
 
-@synthesize headerBackgroundImage;
-@synthesize headerBackgroundHighlightImage;
 
 @synthesize addressLabel;
 @synthesize stateLabel;
@@ -154,8 +152,8 @@
             [self addSubview:sub];
         }
         // Set selected+over background: IB lack !
-        [pauseButton setImage:[UIImage imageNamed:@"call_state_pause_over.png"]
-                              forState:(UIControlStateHighlighted | UIControlStateSelected)];
+//        [pauseButton setImage:[UIImage imageNamed:@"call_state_pause_over.png"]
+//                              forState:(UIControlStateHighlighted | UIControlStateSelected)];
 
         self->currentCall = FALSE;
 
@@ -199,9 +197,7 @@
                                                     name:UIApplicationWillEnterForegroundNotification
                                                   object:nil];
 
-
-    [headerBackgroundImage release];
-    [headerBackgroundHighlightImage release];
+    [_headerBackground release];
 
     [addressLabel release];
     [stateLabel release];
@@ -246,6 +242,7 @@
     [videoSentSizeLabel release];
     [videoRecvSizeHeaderLabel release];
     [videoRecvSizeLabel release];
+    [_headerBackground release];
     [super dealloc];
 }
 
@@ -267,11 +264,11 @@
 
 - (void)setCurrentCall:(BOOL) val {
     currentCall = val;
-    if (currentCall && ![self isBlinkAnimationRunning:@"blink" target:headerBackgroundHighlightImage]) {
-        [self startBlinkAnimation:@"blink" target:headerBackgroundHighlightImage];
+    if (currentCall && ![self isBlinkAnimationRunning:@"blink" target:self.headerBackground]) {
+        [self startBlinkAnimation:@"blink" target:self.headerBackground];
     }
     if (!currentCall) {
-        [self stopBlinkAnimation:@"blink" target:headerBackgroundHighlightImage];
+        [self stopBlinkAnimation:@"blink" target:self.headerBackground];
     }
 }
 
@@ -339,7 +336,7 @@
 
 - (void)applicationWillEnterForeground:(NSNotification*)notif {
     if (currentCall) {
-        [self startBlinkAnimation:@"blink" target:headerBackgroundHighlightImage];
+        [self startBlinkAnimation:@"blink" target:self.headerBackground];
     }
 }
 
@@ -386,6 +383,7 @@
 
     [addressLabel setText:data.address];
     [avatarImage setImage:data.image];
+    avatarImage.tintColor = [UIColor lightGrayColor];
 
     LinphoneCallState state = linphone_call_get_state(call);
     if(!conferenceCell) {
@@ -403,18 +401,15 @@
             [pauseButton update];
         }
         [removeButton setHidden:true];
-        if(firstCell) {
-            [headerBackgroundImage setImage:[UIImage imageNamed:@"cell_call_first.png"]];
-            [headerBackgroundHighlightImage setImage:[UIImage imageNamed:@"cell_call_first_highlight.png"]];
-        } else {
-            [headerBackgroundImage setImage:[UIImage imageNamed:@"cell_call.png"]];
-            [headerBackgroundHighlightImage setImage:[UIImage imageNamed:@"cell_call_highlight.png"]];
-        }
+//        if(firstCell) {
+//            [headerBackgroundHighlightImage setImage:[UIImage imageNamed:@"cell_call_first_highlight.png"]];
+//        } else {
+//            [headerBackgroundHighlightImage setImage:[UIImage imageNamed:@"cell_call_highlight.png"]];
+//        }
     } else {
         [stateImage setHidden:true];
         [pauseButton setHidden:true];
         [removeButton setHidden:false];
-        [headerBackgroundImage setImage:[UIImage imageNamed:@"cell_conference.png"]];
     }
 
     int duration = linphone_call_get_duration(call);

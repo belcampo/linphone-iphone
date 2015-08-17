@@ -30,7 +30,7 @@
                     <accessibility key="accessibilityConfiguration" label="Pause"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                    <state key="normal" image="call_state_play_default.png">
+                    <state key="normal" image="play">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="selected" image="call_state_pause_default.png"/>
@@ -44,8 +44,8 @@
     </objects>
     <resources>
         <image name="call_state_pause_default.png" width="43" height="50"/>
-        <image name="call_state_play_default.png" width="43" height="46"/>
         <image name="call_state_play_over.png" width="43" height="46"/>
+        <image name="play" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

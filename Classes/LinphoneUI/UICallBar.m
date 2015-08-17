@@ -107,6 +107,9 @@
 #pragma mark - ViewController Functions
 
 - (void)viewDidLoad {
+    
+    optionsView.clipsToBounds = YES;
+    
     [pauseButton setType:UIPauseButtonType_CurrentCall call:nil];
     
     [zeroButton setDigit:'0'];
@@ -147,18 +150,19 @@
 
     
     self.hangupButton.backgroundColor = UIColorFromRGB(0xFB2025);
-    self.dialerButton.backgroundColor = UIColorFromRGBWithAlpha(0xFFFFFF, 0.85);
-    self.pauseButton.backgroundColor = UIColorFromRGBWithAlpha(0xFB3A16, 0.3);
-    self.videoButton.backgroundColor = UIColorFromRGBWithAlpha(0xFB3A16, 0.3);
-    self.microButton.backgroundColor = UIColorFromRGBWithAlpha(0xFB3A16, 0.3);
-    self.speakerButton.backgroundColor = UIColorFromRGBWithAlpha(0xFB3A16, 0.3);
-    self.routesButton.backgroundColor = UIColorFromRGBWithAlpha(0xFB3A16, 0.3);
-    self.routesBluetoothButton.backgroundColor = UIColorFromRGBWithAlpha(0xFB3A16, 0.3);
-    self.routesReceiverButton.backgroundColor = UIColorFromRGBWithAlpha(0xFB3A16, 0.3);
-    self.routesSpeakerButton.backgroundColor = UIColorFromRGBWithAlpha(0xFB3A16, 0.3);
-    self.optionsAddButton.backgroundColor = UIColorFromRGBWithAlpha(0xFB3A16, 0.3);
-    self.optionsTransferButton.backgroundColor = UIColorFromRGBWithAlpha(0xFB3A16, 0.3);
-    
+    self.dialerButton.backgroundColor = UIColorFromRGBWithAlpha(0xFFFFFF, 0.5);
+    self.pauseButton.backgroundColor = UIColorFromRGBWithAlpha(0xFFFFFF, 0.5);
+    self.videoButton.backgroundColor = UIColorFromRGBWithAlpha(0xFFFFFF, 0.5);
+    self.microButton.backgroundColor = UIColorFromRGBWithAlpha(0xFFFFFF, 0.5);
+    self.speakerButton.backgroundColor = UIColorFromRGBWithAlpha(0xFFFFFF, 0.5);
+    self.routesButton.backgroundColor = UIColorFromRGBWithAlpha(0xFFFFFF, 0.5);
+    self.routesBluetoothButton.backgroundColor = UIColorFromRGBWithAlpha(0xFFFFFF, 0.5);
+    self.routesReceiverButton.backgroundColor = UIColorFromRGBWithAlpha(0xFFFFFF, 0.5);
+    self.routesSpeakerButton.backgroundColor = UIColorFromRGBWithAlpha(0xFFFFFF, 0.5);
+    self.optionsButton.backgroundColor = UIColorFromRGBWithAlpha(0xFFFFFF, 0.5);
+    self.optionsAddButton.backgroundColor = UIColorFromRGBWithAlpha(0xFFFFFF, 0.5);
+    self.optionsTransferButton.backgroundColor = UIColorFromRGBWithAlpha(0xFFFFFF, 0.5);
+
     [super viewDidLoad];
 }
 
@@ -283,6 +287,8 @@
     return NO;
 }
 
+
+
 #pragma mark -
 
 - (void)showAnimation:(NSString*)animationID target:(UIView*)target completion:(void (^)(BOOL finished))completion {
@@ -331,13 +337,20 @@
     [dialerButton setOn];
     
     if([padView isHidden]) {
-        [UIView animateWithDuration:0.33 delay:0 usingSpringWithDamping:0.1 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-            padView.alpha = 1;
-        } completion:^(BOOL finished) {
-            
-        }];
+        
+        [self hideOptions:YES];
+        
         if(animated) {
-            [self showAnimation:@"show" target:padView completion:^(BOOL finished){}];
+            padView.alpha = 0;
+            padView.hidden = NO;
+            CGRect frame = padView.frame;
+            padView.frame = CGRectInset(frame, 20, 20);
+            [UIView animateWithDuration:0.33 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                padView.alpha = 1;
+                padView.frame = frame;
+            } completion:^(BOOL finished) {
+                
+            }];
         } else {
             [padView setHidden:FALSE];
         }
@@ -347,8 +360,16 @@
 - (void)hidePad:(BOOL)animated {
     [dialerButton setOff];
     if(![padView isHidden]) {
+        
         if(animated) {
-            [self hideAnimation:@"hide" target:padView completion:^(BOOL finished){}];
+            CGRect frame = padView.frame;
+            padView.frame = CGRectInset(frame, -20, -20);
+            [UIView animateWithDuration:0.33 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                padView.alpha = 0;
+                padView.frame = frame;
+            } completion:^(BOOL finished) {
+                padView.hidden = YES;
+            }];
         } else {
             [padView setHidden:TRUE];
         }
@@ -362,8 +383,23 @@
         [routesSpeakerButton setSelected:[[LinphoneManager instance] speakerEnabled]];
         [routesReceiverButton setSelected:!([[LinphoneManager instance] bluetoothEnabled] || [[LinphoneManager instance] speakerEnabled])];
         if([routesView isHidden]) {
+            
+            [self hidePad:YES];
+            
             if(animated) {
-                [self showAnimation:@"show" target:routesView completion:^(BOOL finished){}];
+
+                CGRect frameFrom = self.routesButton.frame;
+                CGRect frameTo = self.routesView.frame;
+                routesView.alpha = 0;
+                routesView.hidden = NO;
+                optionsView.frame = frameFrom;
+                [UIView animateWithDuration:0.33 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                    routesView.alpha = 1;
+                    routesView.frame = frameTo;
+                } completion:^(BOOL finished) {
+                    
+                }];
+                
             } else {
                 [routesView setHidden:FALSE];
             }
@@ -376,7 +412,19 @@
         [routesButton setOff];
         if(![routesView isHidden]) {
             if(animated) {
-                [self hideAnimation:@"hide" target:routesView completion:^(BOOL finished){}];
+
+                CGRect frameFrom = self.routesView.frame;
+                CGRect frameTo = self.routesButton.frame;
+                routesView.hidden = NO;
+                routesView.frame = frameFrom;
+                [UIView animateWithDuration:0.33 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                    routesView.alpha = 0;
+                    routesView.frame = frameTo;
+                } completion:^(BOOL finished) {
+                    routesView.hidden = YES;
+                    routesView.frame = frameFrom;
+                }];
+                
             } else {
                 [routesView setHidden:TRUE];
             }
@@ -387,11 +435,23 @@
 - (void)showOptions:(BOOL)animated {
     [optionsButton setOn];
     
-    
-    
     if([optionsView isHidden]) {
+        
+        [self hidePad:YES];
+        
         if(animated) {
-            [self showAnimation:@"show" target:optionsView completion:^(BOOL finished){}];
+            CGRect frameFrom = self.optionsButton.frame;
+            CGRect frameTo = self.optionsView.frame;
+            optionsView.alpha = 0;
+            optionsView.hidden = NO;
+            optionsView.frame = frameFrom;
+            [UIView animateWithDuration:0.33 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                optionsView.alpha = 1;
+                optionsView.frame = frameTo;
+            } completion:^(BOOL finished) {
+                
+            }];
+
         } else {
             [optionsView setHidden:FALSE];
         }
@@ -402,7 +462,17 @@
     [optionsButton setOff];
     if(![optionsView isHidden]) {
         if(animated) {
-            [self hideAnimation:@"hide" target:optionsView completion:^(BOOL finished){}];
+            CGRect frameFrom = self.optionsView.frame;
+            CGRect frameTo = self.optionsButton.frame;
+            optionsView.hidden = NO;
+            optionsView.frame = frameFrom;
+            [UIView animateWithDuration:0.33 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                optionsView.alpha = 0;
+                optionsView.frame = frameTo;
+            } completion:^(BOOL finished) {
+                optionsView.hidden = YES;
+                optionsView.frame = frameFrom;
+            }];
         } else {
             [optionsView setHidden:TRUE];
         }
