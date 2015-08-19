@@ -33,6 +33,7 @@
                         <constraint firstAttribute="width" constant="60" id="dSE-Nc-AQX"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="History" image="history-icon">
                         <color key="titleColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.43529411759999997" alpha="1" colorSpace="deviceRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -201,7 +202,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.0" green="1" blue="0.19194547549999999" alpha="0.0" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.11764705882352941" green="0.11372549019607843" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="centerY" secondItem="6" secondAttribute="centerY" id="5dP-tZ-cEh"/>
                 <constraint firstAttribute="centerY" secondItem="9" secondAttribute="centerY" id="F9J-pZ-Fdk"/>

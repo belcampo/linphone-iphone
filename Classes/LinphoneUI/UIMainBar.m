@@ -124,42 +124,44 @@ static NSString * const kDisappearAnimation = @"disappear";
                                              selector:@selector(applicationWillEnterForeground:)
                                                  name:UIApplicationWillEnterForegroundNotification
                                                object:nil];
-
+    
+    
     {
-        UIButton *historyButtonLandscape = (UIButton*) [landscapeView viewWithTag:[historyButton tag]];
- 
-        [LinphoneUtils buttonFixStatesForTabs:historyButton];
-        [LinphoneUtils buttonFixStatesForTabs:historyButtonLandscape];
+        historyButton.tintColor = UIColorFromRGB(0xffffff);
+        UIImage *image = [historyButton.currentImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [self.historyButton setImage:image forState:UIControlStateNormal];
+        historyButton.imageView.tintColor = UIColorFromRGB(0xffffff);
+    }
+    
+    {
+        settingsButton.tintColor = UIColorFromRGB(0xffffff);
+        UIImage *image = [settingsButton.currentImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [self.settingsButton setImage:image forState:UIControlStateNormal];
+        settingsButton.imageView.tintColor = UIColorFromRGB(0xffffff);
+    }
+    
+    {
+        dialerButton.tintColor = UIColorFromRGB(0xffffff);
+        UIImage *image = [dialerButton.currentImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [self.dialerButton setImage:image forState:UIControlStateNormal];
+        dialerButton.imageView.tintColor = UIColorFromRGB(0xffffff);
+    }
+    
+    {
+        chatButton.tintColor = UIColorFromRGB(0xffffff);
+        UIImage *image = [chatButton.currentImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [self.chatButton setImage:image forState:UIControlStateNormal];
+        chatButton.imageView.tintColor = UIColorFromRGB(0xffffff);
+    }
+    
+    {
+        contactsButton.tintColor = UIColorFromRGB(0xffffff);
+        UIImage *image = [contactsButton.currentImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [self.contactsButton setImage:image forState:UIControlStateNormal];
+        contactsButton.imageView.tintColor = UIColorFromRGB(0xffffff);
     }
 
-    {
-        UIButton *contactsButtonLandscape = (UIButton*) [landscapeView viewWithTag:[contactsButton tag]];
-
-
-
-        [LinphoneUtils buttonFixStatesForTabs:contactsButton];
-        [LinphoneUtils buttonFixStatesForTabs:contactsButtonLandscape];
-    }
-    {
-        UIButton *dialerButtonLandscape = (UIButton*) [landscapeView viewWithTag:[dialerButton tag]];
-
-
-        [LinphoneUtils buttonFixStatesForTabs:dialerButton];
-        [LinphoneUtils buttonFixStatesForTabs:dialerButtonLandscape];
-    }
-    {
-        UIButton *settingsButtonLandscape = (UIButton*) [landscapeView viewWithTag:[settingsButton tag]];
-
-        [LinphoneUtils buttonFixStatesForTabs:settingsButton];
-        [LinphoneUtils buttonFixStatesForTabs:settingsButtonLandscape];
-    }
-
-    {
-        UIButton *chatButtonLandscape = (UIButton*) [landscapeView viewWithTag:[chatButton tag]];
-
-        [LinphoneUtils buttonFixStatesForTabs:chatButton];
-        [LinphoneUtils buttonFixStatesForTabs:chatButtonLandscape];
-    }
+    
     if ([LinphoneManager langageDirectionIsRTL]){
         [self flipImageForButton:historyButton];
         [self flipImageForButton:settingsButton];
