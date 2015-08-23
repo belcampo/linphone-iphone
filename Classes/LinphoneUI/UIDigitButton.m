@@ -110,7 +110,7 @@ static UIColor *dialButtonTextColor;
 {
     self.subLabel = [UILabel new];
     self.subLabel.text = text;
-    self.subLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:11  ];
+    self.subLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
     self.subLabel.textColor = dialButtonTextColor;
     [self insertSubview:self.subLabel belowSubview:self.titleLabel];
     [self.subLabel sizeToFit];

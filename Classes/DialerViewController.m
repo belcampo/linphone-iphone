@@ -29,8 +29,19 @@
 
 #include "linphone/linphonecore.h"
 
+@interface DialerViewController()
+
+@property (retain, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *buttonRowHeightConstraints;
+@property (retain, nonatomic) IBOutlet NSLayoutConstraint *dialerHeightConstraint;
+@property (retain, nonatomic) IBOutlet NSLayoutConstraint *callButtonWidthConstraint;
+@property (retain, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *verticalAlignButtonRowConstraints;
+@property (retain, nonatomic) IBOutlet UIView *padView;
+
+@end
 
 @implementation DialerViewController
+
+
 
 @synthesize transferMode;
 
@@ -97,6 +108,11 @@
     // Remove all observers
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
+    [_buttonRowHeightConstraints release];
+    [_dialerHeightConstraint release];
+    [_callButtonWidthConstraint release];
+    [_verticalAlignButtonRowConstraints release];
+    [_padView release];
 	[super dealloc];
 }
 
@@ -126,6 +142,21 @@ static UICompositeViewDescription *compositeDescription = nil;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        if ([[UIScreen mainScreen] bounds].size.height<=480.0f)
+        {
+            [addressField  setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
+            self.dialerHeightConstraint.constant = 48;
+            //self.callButtonWidthConstraint.constant = 72;
+            for (NSLayoutConstraint *constraint in self.verticalAlignButtonRowConstraints) {
+                constraint.constant = 6;
+            }
+            self.padView.transform = CGAffineTransformMakeScale(0.85, 0.85);
+        }
+    }
 
     // Set observer
     [[NSNotificationCenter defaultCenter] addObserver:self

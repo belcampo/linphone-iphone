@@ -19,7 +19,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "UIToggleButton.h"
+#import "UIToggleButtonPlain.h"
 
 #import "ChatTableViewController.h"
 #import "UICompositeViewController.h"
@@ -28,7 +28,7 @@
 }
 
 @property (nonatomic, retain) IBOutlet ChatTableViewController* tableController;
-@property (nonatomic, retain) IBOutlet UIToggleButton *editButton;
+@property (nonatomic, retain) IBOutlet UIToggleButtonPlain *editButton;
 @property (nonatomic, retain) IBOutlet UITextField *addressField;
 
 - (IBAction)onAddClick:(id) event;
