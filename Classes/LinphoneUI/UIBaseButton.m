@@ -79,7 +79,7 @@
         self.tintColor = UIColorFromRGB(0x1E1D22);
     }
     else {
-        self.tintColor = UIColorFromRGB(0xFFFFFF);
+        self.tintColor = _defaultTintColor == nil ? UIColorFromRGB(0xFFFFFF) : _defaultTintColor;
     }
 }
 

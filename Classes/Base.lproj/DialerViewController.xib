@@ -29,6 +29,7 @@
                 <outlet property="threeButton" destination="29" id="193"/>
                 <outlet property="transferButton" destination="236" id="253"/>
                 <outlet property="twoButton" destination="37" id="192"/>
+                <outlet property="verticalSpaceDailerPadConstraint" destination="DDv-WJ-gzl" id="Pr4-gK-4hY"/>
                 <outlet property="view" destination="171" id="176"/>
                 <outlet property="zeroButton" destination="40" id="198"/>
                 <outletCollection property="buttonRowHeightConstraints" destination="MvM-ea-d83" id="fTN-Hq-irq"/>
@@ -45,8 +46,8 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
             <subviews>
-                <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="178" userLabel="dialer">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="62"/>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="178" userLabel="dialer">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                     <subviews>
                         <textField opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter SIP address or phone number..." adjustsFontSizeToFit="NO" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="4" userLabel="addressField" customClass="UIAddressTextField">
                             <rect key="frame" x="8" y="19" width="584" height="26"/>

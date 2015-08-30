@@ -11,5 +11,6 @@
 IB_DESIGNABLE
 @interface UIBaseButton : UIButton
 
+@property (nonatomic, strong) UIColor *defaultTintColor;
 
 @end

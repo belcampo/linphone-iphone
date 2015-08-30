@@ -35,6 +35,7 @@
 @property (retain, nonatomic) IBOutlet NSLayoutConstraint *dialerHeightConstraint;
 @property (retain, nonatomic) IBOutlet NSLayoutConstraint *callButtonWidthConstraint;
 @property (retain, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *verticalAlignButtonRowConstraints;
+@property (retain, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaceDailerPadConstraint;
 @property (retain, nonatomic) IBOutlet UIView *padView;
 
 @end
@@ -143,20 +144,6 @@ static UICompositeViewDescription *compositeDescription = nil;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    
-    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-    {
-        if ([[UIScreen mainScreen] bounds].size.height<=480.0f)
-        {
-            [addressField  setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
-            self.dialerHeightConstraint.constant = 48;
-            //self.callButtonWidthConstraint.constant = 72;
-            for (NSLayoutConstraint *constraint in self.verticalAlignButtonRowConstraints) {
-                constraint.constant = 6;
-            }
-            self.padView.transform = CGAffineTransformMakeScale(0.85, 0.85);
-        }
-    }
 
     // Set observer
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -273,6 +260,34 @@ static UICompositeViewDescription *compositeDescription = nil;
         if ([LinphoneManager instance].frontCamId != nil) {
             // only show camera switch button if we have more than 1 camera
             [videoCameraSwitch setHidden:FALSE];
+        }
+    }
+    
+    [self.eraseButton setImage:[[UIImage imageNamed:@"backspace-icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    self.eraseButton.defaultTintColor = UIColorFromRGB(0x333333);
+    self.eraseButton.tintColor = UIColorFromRGB(0x333333);
+    
+    
+    [self.addContactButton setImage:[[UIImage imageNamed:@"add-contact-icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    self.addContactButton.defaultTintColor = UIColorFromRGB(0x333333);
+    self.addContactButton.tintColor = UIColorFromRGB(0x333333);
+    
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        if ([[UIScreen mainScreen] bounds].size.height<=480.0f) {
+            [addressField  setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
+            self.dialerHeightConstraint.constant = 48;
+            //self.callButtonWidthConstraint.constant = 72;
+            for (NSLayoutConstraint *constraint in self.verticalAlignButtonRowConstraints) {
+                constraint.constant = 6;
+            }
+            if(NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1) {
+                self.padView.transform = CGAffineTransformMakeScale(0.85, 0.85);
+            }
+            else {
+                self.padView.transform = CGAffineTransformMakeScale(0.87, 0.87);
+                self.verticalSpaceDailerPadConstraint.constant = -24;
+            }
+            
         }
     }
 }
